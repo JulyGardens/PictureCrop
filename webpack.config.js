@@ -9,6 +9,7 @@ const config = {
   entry: {
     index: './src/index.tsx',
   },
+  stats: 'errors-only',
   output: {
     path: resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -26,6 +27,15 @@ const config = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'react-svg-loader',
+            options: { tsx: true },
+          },
+        ],
       },
     ],
   },

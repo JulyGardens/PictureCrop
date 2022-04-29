@@ -1,5 +1,13 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Main } from './pages/main'
 
 export default function App() {
-  return <div>Hello World!</div>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
