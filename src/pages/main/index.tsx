@@ -1,15 +1,19 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import style from './index.module.css'
 import UploadIcon from '../../../public/icons/upload-file.svg'
 import { Modal } from '../../components/Modal'
 import { Button } from '../../components/Button'
+import { ImageCard } from '../../components/ImageCard'
+import { Crop } from '../../components/Crop'
 
 export const Main = () => {
   const [imageName, setImageName] = useState('')
   const [image, setImage] = useState('')
   const [croppedImage, setCroppedImage] = useState('')
   const [displayModal, setDisplayModal] = useState(false)
+
+  const imageRef = useRef<HTMLImageElement>(null)
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -29,20 +33,39 @@ export const Main = () => {
   return (
     <div className={classNames(style.container)}>
       {croppedImage && (
-        <div className={classNames(style.renderContainer)}>
-          <img src={croppedImage} className={classNames(style.image)} />
-        </div>
+        <ImageCard imageName={imageName} imageSrc={croppedImage} />
       )}
       {image && (
         <Modal
-          imageSrc={image}
-          setImage={setCroppedImage}
-          imageName={imageName}
+          setImage={setImage}
           displayModal={displayModal}
           setDisplayModal={value => setDisplayModal(value)}
-        />
+        >
+          <Crop
+            imageRef={imageRef}
+            setImage={setImage}
+            imageSrc={image}
+            setCroppedImage={setCroppedImage}
+            setDisplayModal={setDisplayModal}
+          >
+            <img
+              ref={imageRef}
+              src={image}
+              className={classNames(style.imageCrop)}
+            />
+          </Crop>
+        </Modal>
       )}
-      <Button Icon={UploadIcon} onInputChange={onChange} withInput={true}>
+      <Button
+        className={classNames(style.button)}
+        Icon={UploadIcon}
+        onInputChange={onChange}
+        withInput={true}
+        onClick={() => {
+          setCroppedImage('')
+          setImageName('')
+        }}
+      >
         <p>Upload image</p>
       </Button>
     </div>

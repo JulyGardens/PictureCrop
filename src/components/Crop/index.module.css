@@ -1,0 +1,36 @@
+.crop {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: absolute;
+  background-color: var(--transparent-black);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: 250px;
+  height: 160px;
+  cursor: grab;
+}
+
+.cropBorder {
+  border: 1px solid var(--transparent-white);
+}
+
+.renderContainer {
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+}
+
+.cropButton {
+  margin-top: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}

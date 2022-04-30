@@ -55,12 +55,6 @@
   fill: white;
 }
 
-.renderContainer {
-  position: relative;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.buttonMargin {
+  margin-top: 10px;
 }

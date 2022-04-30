@@ -19,8 +19,6 @@
 }
 
 .image {
-  height: 100%;
-  max-width: 100%;
   display: block;
   margin: 0;
   box-shadow: black 0 0 15px;
@@ -37,19 +35,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.cropContainer {
-  position: absolute;
-  height: 120px;
-  width: 120px;
-  border: 1px dashed rgb(255, 255, 255);
-  background-color: var(--transparent-black);
-}
-
-.Crop-Controls {
-  margin-bottom: 10px;
-}
-.Crop-Controls > * {
-  margin-bottom: 3px;
 }

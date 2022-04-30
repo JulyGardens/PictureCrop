@@ -1,22 +1,21 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { ModalProps } from './index.props'
 import style from './index.module.css'
-import { Card } from '../Card'
 import CloseIcon from '../../../public/icons/close-file.svg'
+import { ModalProps } from './index.props'
 import { Button } from '../Button'
 
 export const Modal = ({
-  imageSrc,
   displayModal,
   setDisplayModal,
-  imageName,
   className,
+  children,
   setImage,
   ...props
 }: ModalProps) => {
   const onClick = () => {
     setDisplayModal(false)
+    setImage('')
   }
 
   return (
@@ -27,16 +26,11 @@ export const Modal = ({
       {...props}
     >
       <div className={classNames(style.modalContent)}>
-        <Card
-          setDisplayModal={setDisplayModal}
-          setImage={setImage}
-          imageSrc={imageSrc}
-          imageName={imageName}
-        />
+        {children}
         <Button
           Icon={CloseIcon}
           onClick={onClick}
-          style={{ marginBottom: '30px' }}
+          className={classNames(style.buttonMargin)}
         >
           <p>Close modal</p>
         </Button>
